@@ -10,15 +10,15 @@ body {
 
 .hero {
     display: flex;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
     background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
     color: #fff;
     height: 100vh;
     padding: 0 20px;
-    text-align: center;
     position: relative;
     overflow: hidden;
+    margin-top: 60px;
 }
 
 .hero::before {
@@ -28,19 +28,32 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0.2;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 0;
 }
 
 .hero-content {
     max-width: 800px;
     width: 100%;
     z-index: 1;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    text-align: justify;
+    /* Align text to justify */
 }
 
-.intro h1 {
+.hero-content.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.title {
     font-size: 4rem;
     margin-bottom: 20px;
     animation: slideIn 1s ease-out forwards;
+    text-align: left;
+    /* Align title to the left */
 }
 
 .highlight {
@@ -51,26 +64,32 @@ body {
     border-radius: 5px;
 }
 
-.intro p {
-    font-size: 1.6rem;
+.description {
+    font-size: 1.4rem;
     margin: 20px 0 40px;
     line-height: 1.6;
     animation: fadeInText 1.5s ease-out forwards;
+    color: #e0e0e0;
+    text-align: justify;
 }
 
-.scroll-button {
-    padding: 15px 30px;
+.cta-button {
+    padding: 20px 40px;
     background-color: #ff6347;
     border: none;
     color: #fff;
     cursor: pointer;
-    border-radius: 10px;
-    font-size: 1.5rem;
+    border-radius: 50px;
+    font-size: 1.8rem;
+    font-weight: 700;
     transition: background-color 0.3s, transform 0.3s;
     animation: fadeInButton 2s ease-out forwards;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.scroll-button:hover {
+.cta-button:hover {
     background-color: #ff4500;
     transform: scale(1.05);
 }
@@ -79,24 +98,19 @@ body {
     margin-top: 40px;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
     animation: fadeInIcons 2.5s ease-out forwards;
 }
 
 .social-icons a {
     color: #fff;
-    font-size: 2.4rem;
+    font-size: 3rem;
     transition: color 0.3s, transform 0.3s;
 }
 
 .social-icons a:hover {
     color: #ff6347;
     transform: scale(1.2);
-}
-
-.fade-in {
-    opacity: 0;
-    animation: fadeIn 1s forwards;
 }
 
 @keyframes fadeIn {
@@ -148,19 +162,39 @@ body {
 }
 
 @media (max-width: 768px) {
-    .intro h1 {
+    .title {
         font-size: 3rem;
     }
 
-    .intro p {
+    .description {
         font-size: 1.2rem;
     }
 
-    .scroll-button {
-        font-size: 1rem;
+    .cta-button {
+        font-size: 1.5rem;
+        padding: 15px 30px;
     }
 
     .social-icons a {
-        font-size: 1.8rem;
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .description {
+        font-size: 1rem;
+    }
+
+    .cta-button {
+        font-size: 1.2rem;
+        padding: 12px 24px;
+    }
+
+    .social-icons a {
+        font-size: 2.2rem;
     }
 }
